@@ -26,7 +26,7 @@ func SetupRoutes(e *echo.Echo) {
 }
 
 func execCmd(c echo.Context, cmd ...string) error {
-	err := exec.Command(cmd[0], cmd...).Run()
+	err := exec.Command(cmd[0], cmd[1:]...).Run()
 	if err != nil {
 		return c.String(500, "Failed to execute command: "+err.Error())
 	}
